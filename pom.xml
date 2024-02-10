@@ -93,6 +93,15 @@
                     </excludes>
                 </configuration>
             </plugin>
+            <plugin>
+                <!-- https://mvnrepository.com/artifact/org.codehaus.mojo/exec-maven-plugin -->
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.1</version>
+                <configuration>
+                    <mainClass>com.logankells.cinemarestservice.CinemaRestServiceApplication</mainClass>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
