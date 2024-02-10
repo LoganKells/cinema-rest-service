@@ -1,10 +1,10 @@
 package com.logankells.cinemarestservice.controller;
 
-import com.logankells.cinemarestservice.model.Cinema;
+import com.logankells.cinemarestservice.model.*;
 import com.logankells.cinemarestservice.service.CinemaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class CinemaController {
@@ -23,6 +23,21 @@ public class CinemaController {
 
     @GetMapping("/seats")
     public Cinema getSeats() {
-        return cinemaService.cinema;
+        return cinemaService.getCinema();
+    }
+
+    @PostMapping(value = "/purchase")
+    public ResponseEntity<String> postPurchaseSeat(@RequestBody Seat seat) {
+        return cinemaService.purchaseSeat(seat);
+    }
+
+    @PostMapping(value = "/return")
+    public ResponseEntity<String> postReturnSeat(@RequestBody Ticket ticket) {
+        return cinemaService.returnSeat(ticket);
+    }
+
+    @GetMapping(value = "/stats")
+    public ResponseEntity<String> getStats(@RequestParam(value = "password", required = false) String password) {
+        return cinemaService.getStats(password);
     }
 }
