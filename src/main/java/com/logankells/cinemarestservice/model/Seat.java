@@ -3,6 +3,8 @@ package com.logankells.cinemarestservice.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
+import java.util.Objects;
+
 @Data
 public class Seat {
 
@@ -39,6 +41,11 @@ public class Seat {
 
         final Seat seat = (Seat) obj;
         return this.row == seat.row && this.column == seat.column;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.row, this.column);
     }
 
 }
